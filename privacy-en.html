@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PluckNote Privacy Policy</title>
+<link rel="icon" type="image/png" href="imgs/plucknote.png">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --brand: #5B7CDB;
+  --brand-soft: #EEF2FB;
+  --bg: #FAF8F8;
+  --surface: #FFFFFF;
+  --text: #1a1a1a;
+  --text-2: #555;
+  --text-3: #888;
+  --divider: #eee;
+  --radius: 18px;
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.7;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 248, 248, 0.85);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--divider);
+}
+.nav-inner {
+  max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 700; }
+.brand:hover { text-decoration: none; }
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 8px;
+  overflow: hidden; flex: none;
+  background: transparent; position: relative;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+}
+.brand-mark img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-text small { font-size: 11px; color: var(--text-3); font-weight: 500; margin-top: 2px; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { color: var(--text-2); font-size: 14px; }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-cta {
+  background: var(--text); color: #fff !important;
+  padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 500;
+}
+.nav-cta:hover { background: var(--brand); text-decoration: none; }
+.lang-switch { font-size: 12px; color: var(--text-3); }
+.lang-switch a { color: var(--text-3); margin: 0 4px; }
+.lang-switch a.active { color: var(--text); font-weight: 600; }
+
+/* Legal article */
+main.legal { padding: 64px 0 80px; }
+.legal-card {
+  max-width: 760px; margin: 0 auto;
+  background: var(--surface); border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  padding: 48px 56px;
+  border: 1px solid var(--divider);
+}
+.legal h1 {
+  font-size: 32px; font-weight: 700;
+  margin-bottom: 8px; color: var(--text);
+  letter-spacing: -0.01em;
+}
+.legal .meta {
+  color: var(--text-3); font-size: 14px;
+  margin-bottom: 32px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--divider);
+}
+.legal h2 {
+  font-size: 20px; font-weight: 600;
+  margin-top: 32px; margin-bottom: 12px; color: var(--text);
+}
+.legal p { margin-bottom: 14px; color: #333; }
+.legal ul { margin: 12px 0 12px 24px; color: #333; }
+.legal li { margin-bottom: 6px; }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--divider);
+  padding: 56px 0 32px; margin-top: 32px;
+}
+.foot-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  margin-bottom: 40px;
+}
+.foot-brand p { color: var(--text-2); font-size: 13.5px; margin-top: 12px; max-width: 280px; }
+.foot-col h5 { font-size: 13px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
+.foot-col a { display: block; color: var(--text-2); font-size: 13.5px; padding: 4px 0; }
+.foot-col a:hover { color: var(--brand); text-decoration: none; }
+.foot-bottom {
+  border-top: 1px solid var(--divider); padding-top: 24px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 12.5px; color: var(--text-3);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-links { gap: 14px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .legal-card { padding: 32px 24px; }
+  .legal h1 { font-size: 26px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  main.legal { padding: 40px 0 56px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-en.html" class="brand">
+      <span class="brand-mark"><img src="imgs/plucknote.png" alt="PluckNote"></span>
+      <span class="brand-text">PluckNote<small>Fingerstyle notes</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index-en.html#features">Features</a>
+      <a href="index-en.html#someday">Someday</a>
+      <a href="index-en.html#sound">Sound</a>
+      <a href="index-en.html#privacy">Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="index-en.html#download" class="nav-cta">Download</a>
+      <span class="lang-switch"><a href="privacy-zh.html">中文</a>| <a href="privacy.html" class="active">EN</a></span>
+    </div>
+  </div>
+</nav>
+
+<main class="legal">
+  <div class="legal-card">
+    <h1>PluckNote Privacy Policy</h1>
+    <div class="meta">Last updated: June 13, 2026</div>
+
+    <p>PluckNote ("we", "our", "us") is committed to protecting your privacy. This policy explains what information PluckNote collects and how we use it.</p>
+
+    <h2>Data We Do NOT Collect</h2>
+    <p>PluckNote does not collect, store, transmit, or sell any of the following:</p>
+    <ul>
+    <li>The content of your notes</li>
+    <li>Your personal information (name, email, phone)</li>
+    <li>Your location data</li>
+    <li>Your contacts</li>
+    <li>Your usage analytics</li>
+    <li>Your behavior patterns</li>
+    </ul>
+
+    <h2>Data Stored in Your Personal iCloud</h2>
+    <p>Your notes, including text, colors, and metadata, are stored exclusively in your personal iCloud account via Apple's CloudKit framework. PluckNote has no access to this data. All data is end-to-end encrypted between your devices through Apple's CloudKit infrastructure.</p>
+
+    <h2>How We Use Data</h2>
+    <p>PluckNote does not use your data for any purpose other than providing the app's core functionality (creating, editing, syncing, and deleting notes) directly on your devices. There is no server-side processing of your data by us.</p>
+
+    <h2>Premium Purchase</h2>
+    <p>When you purchase PluckNote Premium, Apple processes the transaction. We receive only the transaction confirmation and the anonymized product identifier ("com.plucknote.premium"). We do not receive your Apple ID, payment information, or billing address.</p>
+
+    <h2>Analytics</h2>
+    <p>PluckNote does not use any third-party analytics services. We do not track your behavior, page views, or feature usage.</p>
+
+    <h2>Children</h2>
+    <p>PluckNote does not knowingly collect data from children under 13. The app does not target children and contains no content inappropriate for any age group.</p>
+
+    <h2>International Users</h2>
+    <p>PluckNote is available worldwide. Your data is stored in the region associated with your iCloud account (managed by Apple). We make no claim to international data transfers because we do not transfer your data anywhere.</p>
+
+    <h2>Your Rights</h2>
+    <ul>
+    <li>You can delete any note at any time within the app</li>
+    <li>You can delete your data by uninstalling the app (iCloud copy persists for 30 days per Apple's retention policy)</li>
+    <li>You can request information about your data by contacting us at the address below (we will respond with confirmation that we hold no data)</li>
+    </ul>
+
+    <h2>Third-Party Services</h2>
+    <p>PluckNote uses only Apple's first-party frameworks:</p>
+    <ul>
+    <li>CloudKit (for sync)</li>
+    <li>StoreKit (for Premium purchase)</li>
+    <li>WidgetKit (for Home Screen widgets)</li>
+    <li>SwiftUI / UIKit (for user interface)</li>
+    </ul>
+    <p>We do not integrate any third-party SDKs, advertising networks, or analytics platforms.</p>
+
+    <h2>Changes to This Policy</h2>
+    <p>If we update this policy, we will notify you through an in-app message and update the "Last updated" date above. Material changes will require your continued use of the app to indicate acceptance.</p>
+
+    <h2>Contact</h2>
+    <p>For privacy questions or requests:</p>
+    <ul>
+    <li>Email: chixiang1983@gmail.com</li>
+    <li>Response time: within 7 business days</li>
+    </ul>
+
+    <h2>Jurisdiction</h2>
+    <p>This policy is governed by the laws of the People's Republic of China for users in China, and the laws of your jurisdiction elsewhere. Any disputes will be resolved through friendly negotiation first.</p>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index-en.html" class="brand">
+          <span class="brand-mark"><img src="imgs/plucknote.png" alt="PluckNote"></span>
+          <span class="brand-text">PluckNote<small>Fingerstyle notes</small></span>
+        </a>
+        <p>Pluck a string. Capture a thought. A quiet pen that belongs only to you.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">iPhone</a>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">iPad</a>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">Mac</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="index-en.html#features">Quick start</a>
+        <a href="index-en.html#someday">Someday guide</a>
+        <a href="index-en.html#sound">About the sound</a>
+        <a href="index-en.html#privacy">Privacy promise</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="mailto:chixiang1983@gmail.com">Email</a>
+        <a href="https://github.com/chixiang" target="_blank" rel="noopener">GitHub</a>
+        <a href="#">Twitter</a>
+        <a href="#">Mastodon</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 PluckNote. All rights reserved.</span>
+      <span>Made with care · Shanghai, China</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
