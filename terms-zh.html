@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PluckNote 服务条款</title>
+<link rel="icon" type="image/png" href="imgs/plucknote.png">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --brand: #5B7CDB;
+  --brand-soft: #EEF2FB;
+  --bg: #FAF8F8;
+  --surface: #FFFFFF;
+  --text: #1a1a1a;
+  --text-2: #555;
+  --text-3: #888;
+  --divider: #eee;
+  --radius: 18px;
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.8;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 248, 248, 0.85);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--divider);
+}
+.nav-inner {
+  max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 700; }
+.brand:hover { text-decoration: none; }
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 8px;
+  overflow: hidden; flex: none;
+  background: transparent; position: relative;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+}
+.brand-mark img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-text small { font-size: 11px; color: var(--text-3); font-weight: 500; margin-top: 2px; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { color: var(--text-2); font-size: 14px; }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-cta {
+  background: var(--text); color: #fff !important;
+  padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 500;
+}
+.nav-cta:hover { background: var(--brand); text-decoration: none; }
+.lang-switch { font-size: 12px; color: var(--text-3); }
+.lang-switch a { color: var(--text-3); margin: 0 4px; }
+.lang-switch a.active { color: var(--text); font-weight: 600; }
+
+/* Legal article */
+main.legal { padding: 64px 0 80px; }
+.legal-card {
+  max-width: 760px; margin: 0 auto;
+  background: var(--surface); border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+  padding: 48px 56px;
+  border: 1px solid var(--divider);
+}
+.legal .lang-switch-bar {
+  text-align: right; margin-bottom: 24px;
+  font-size: 13px; color: var(--text-3);
+}
+.legal .lang-switch-bar a { color: var(--text-3); margin: 0 4px; }
+.legal .lang-switch-bar a.active { color: var(--text); font-weight: 600; }
+.legal h1 {
+  font-size: 30px; font-weight: 700;
+  margin-bottom: 8px; color: var(--text);
+  letter-spacing: -0.01em;
+}
+.legal .meta {
+  color: var(--text-3); font-size: 14px;
+  margin-bottom: 32px; padding-bottom: 16px;
+  border-bottom: 1px solid var(--divider);
+}
+.legal h2 {
+  font-size: 19px; font-weight: 600;
+  margin-top: 32px; margin-bottom: 12px; color: var(--text);
+}
+.legal p { margin-bottom: 14px; color: #333; }
+.legal ul { margin: 12px 0 12px 24px; color: #333; }
+.legal li { margin-bottom: 6px; }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--divider);
+  padding: 56px 0 32px; margin-top: 32px;
+}
+.foot-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  margin-bottom: 40px;
+}
+.foot-brand p { color: var(--text-2); font-size: 13.5px; margin-top: 12px; max-width: 280px; }
+.foot-col h5 { font-size: 13px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
+.foot-col a { display: block; color: var(--text-2); font-size: 13.5px; padding: 4px 0; }
+.foot-col a:hover { color: var(--brand); text-decoration: none; }
+.foot-bottom {
+  border-top: 1px solid var(--divider); padding-top: 24px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 12.5px; color: var(--text-3);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .nav-links { gap: 14px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .legal-card { padding: 32px 24px; }
+  .legal h1 { font-size: 24px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  main.legal { padding: 40px 0 56px; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><img src="imgs/plucknote.png" alt="PluckNote"></span>
+      <span class="brand-text">PluckNote<small>指弹笔记</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="index.html#features">功能</a>
+      <a href="index.html#someday">Someday</a>
+      <a href="index.html#sound">拨弦</a>
+      <a href="index.html#privacy">隐私</a>
+      <a href="index.html#download" class="nav-cta">下载</a>
+      <span class="lang-switch"><a href="terms.html">EN</a>| <a href="terms-zh.html" class="active">中文</a></span>
+    </div>
+  </div>
+</nav>
+
+<main class="legal">
+  <div class="legal-card">
+    <div class="lang-switch-bar">
+      <a href="terms.html">English</a> | <a href="terms-zh.html" class="active">简体中文</a>
+    </div>
+
+    <h1>PluckNote 服务条款</h1>
+    <div class="meta">最后更新：2026年6月13日</div>
+
+    <p>使用 PluckNote 即表示您同意这些条款。</p>
+
+    <h2>许可</h2>
+    <p>我们授予您个人、非独占、不可转让、可撤销的许可，允许您在自己拥有或控制的 Apple 设备上按照这些条款和 Apple App Store 服务条款使用 PluckNote。</p>
+    <p>PluckNote 基础功能免费提供。Premium 升级为一次性购买，解锁搜索和高级统计功能。</p>
+
+    <h2>Premium 购买条款</h2>
+    <ul>
+    <li>Premium 是非消耗型应用内购买</li>
+    <li>一旦购买，Premium 永久绑定到您的 Apple ID</li>
+    <li>可在新设备上通过"恢复购买"按钮恢复 Premium</li>
+    <li>我们不提供退款；退款申请由 Apple 按其政策处理</li>
+    <li>Premium 价格可能在新版本中变化；已购买的不受影响</li>
+    </ul>
+
+    <h2>用户内容</h2>
+    <p>您对在 PluckNote 中创建的所有笔记保留完全所有权。我们不主张对您内容的任何权利。</p>
+
+    <h2>可接受使用</h2>
+    <p>您同意不：</p>
+    <ul>
+    <li>将 PluckNote 用于任何非法目的</li>
+    <li>反向工程、反编译或修改该应用</li>
+    <li>使用该应用骚扰、辱骂或伤害他人</li>
+    <li>试图通过未授权手段绕过任何 Premium 限制</li>
+    </ul>
+
+    <h2>知识产权</h2>
+    <p>PluckNote 应用、其设计、代码和 36 音吉他实现归我们所有。内置乐曲"茉莉花"属于公有领域。您不得再分发或转售该应用的任何部分。</p>
+
+    <h2>服务可用性</h2>
+    <p>我们不保证不间断的可用性。iCloud 同步取决于 Apple 的 CloudKit 服务。对于因 Apple 服务导致的任何数据丢失，我们不承担责任。</p>
+
+    <h2>免责声明</h2>
+    <p>PLUCKNOTE 按"现状"提供，不附带任何形式的保证。我们在适用法律允许的最大范围内否认所有明示或暗示的保证，包括但不限于适销性、特定用途适用性和不侵权的保证。</p>
+
+    <h2>责任限制</h2>
+    <p>在适用法律允许的最大范围内，因您使用 PLUCKNOTE 引起的任何索赔，我们的总责任不超过您向我们支付的金额（免费版为 0 美元，或 Premium 的购买价格）。</p>
+
+    <h2>终止</h2>
+    <p>如果您违反这些条款，我们保留终止您对 PluckNote 访问的权利。</p>
+
+    <h2>变更</h2>
+    <p>我们可能更新这些条款。重大变更将通过应用内通知。继续使用即表示接受。</p>
+
+    <h2>联系方式</h2>
+    <p>有关这些条款的问题：</p>
+    <ul>
+    <li>邮箱：chixiang1983@gmail.com</li>
+    <li>响应时间：7 个工作日内</li>
+    </ul>
+
+    <h2>司法管辖</h2>
+    <p>这些条款受中华人民共和国法律管辖，适用于中国用户；其他地区用户适用当地法律。</p>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="imgs/plucknote.png" alt="PluckNote"></span>
+          <span class="brand-text">PluckNote<small>指弹笔记</small></span>
+        </a>
+        <p>拨动一根弦，记下一个想法。一支安静的、属于你自己的笔。</p>
+      </div>
+      <div class="foot-col">
+        <h5>产品</h5>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">iPhone 版</a>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">iPad 版</a>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">Mac 版</a>
+        <a href="privacy-zh.html">隐私协议</a>
+        <a href="terms-zh.html">用户协议</a>
+      </div>
+      <div class="foot-col">
+        <h5>资源</h5>
+        <a href="index.html#features">快速上手</a>
+        <a href="index.html#someday">Someday 用法</a>
+        <a href="index.html#sound">拨弦说明</a>
+        <a href="index.html#privacy">隐私承诺</a>
+      </div>
+      <div class="foot-col">
+        <h5>联系</h5>
+        <a href="mailto:chixiang1983@gmail.com">邮件反馈</a>
+        <a href="https://github.com/chixiang" target="_blank" rel="noopener">GitHub</a>
+        <a href="#">微博</a>
+        <a href="#">即刻</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 PluckNote. All rights reserved.</span>
+      <span>Made with care · 沪ICP备 0000000号</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

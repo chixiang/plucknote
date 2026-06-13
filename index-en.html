@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PluckNote · A private note & task app</title>
+<meta name="description" content="PluckNote is a private iCloud-synced note and task app for iPhone, iPad, Mac and Home Screen widgets. Pluck a string. Capture a thought.">
+<link rel="icon" type="image/png" href="imgs/plucknote.png">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --brand: #5B7CDB;
+  --brand-soft: #EEF2FB;
+  --bg: #FAF8F8;
+  --surface: #FFFFFF;
+  --text: #1a1a1a;
+  --text-2: #555;
+  --text-3: #888;
+  --divider: #eee;
+  --radius: 18px;
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 248, 248, 0.85);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--divider);
+}
+.nav-inner {
+  max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 700; }
+.brand:hover { text-decoration: none; }
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 8px;
+  overflow: hidden; flex: none;
+  background: transparent; position: relative;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+}
+.brand-mark img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-text small { font-size: 11px; color: var(--text-3); font-weight: 500; margin-top: 2px; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { color: var(--text-2); font-size: 14px; }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-cta {
+  background: var(--text); color: #fff !important;
+  padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 500;
+}
+.nav-cta:hover { background: var(--brand); text-decoration: none; }
+.lang-switch { font-size: 12px; color: var(--text-3); }
+.lang-switch a { color: var(--text-3); margin: 0 4px; }
+.lang-switch a.active { color: var(--text); font-weight: 600; }
+
+/* Hero */
+.hero { padding: 96px 0 80px; text-align: center; }
+.eyebrow {
+  display: inline-block; font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--brand);
+  background: var(--brand-soft); padding: 6px 12px; border-radius: 999px;
+  margin-bottom: 24px; font-weight: 600;
+}
+.hero h1 {
+  font-size: 56px; line-height: 1.1; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 20px;
+}
+.hero h1 .accent { color: var(--brand); }
+.hero p.lede {
+  font-size: 18px; color: var(--text-2);
+  max-width: 620px; margin: 0 auto 36px;
+}
+.hero-cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 22px; border-radius: 999px;
+  font-size: 15px; font-weight: 600; transition: all .15s ease;
+  border: 1px solid transparent; cursor: pointer;
+}
+.btn-primary { background: var(--text); color: #fff; }
+.btn-primary:hover { background: var(--brand); text-decoration: none; }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--divider); }
+.btn-ghost:hover { border-color: var(--text); text-decoration: none; }
+
+/* Section base */
+section { padding: 72px 0; }
+.section-head { text-align: center; margin-bottom: 48px; }
+.section-head h2 {
+  font-size: 36px; line-height: 1.2; font-weight: 700;
+  letter-spacing: -0.01em; margin-bottom: 12px;
+}
+.section-head p { color: var(--text-2); font-size: 16px; max-width: 560px; margin: 0 auto; }
+
+/* Three feature columns */
+.features {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.feature {
+  background: var(--surface); border: 1px solid var(--divider);
+  border-radius: var(--radius); padding: 32px 28px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.feature:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(91,124,219,0.08); }
+.feature .emoji { font-size: 28px; margin-bottom: 14px; display: inline-block; }
+.feature h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.feature p { color: var(--text-2); font-size: 14.5px; line-height: 1.6; }
+.feature .link { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 500; }
+
+/* Someday highlight */
+.someday {
+  background: var(--surface);
+  border-radius: 24px; padding: 56px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  border: 1px solid var(--divider);
+}
+.someday-text h2 { font-size: 32px; line-height: 1.2; margin-bottom: 16px; }
+.someday-text p { color: var(--text-2); font-size: 16px; margin-bottom: 12px; }
+.someday-visual {
+  background: var(--brand-soft); border-radius: 16px; padding: 28px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.note {
+  background: #fff; border-radius: 10px; padding: 12px 14px;
+  font-size: 14px; color: var(--text); border-left: 3px solid var(--brand);
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+}
+.note .tag { font-size: 11px; color: var(--text-3); }
+.note.someday { border-left-color: #C5B358; }
+.note.today   { border-left-color: #7CA67C; }
+.note.migrate { border-left-color: #E5A05C; opacity: 0.7; text-decoration: line-through; text-decoration-color: var(--text-3); }
+
+/* Sound */
+.sound { text-align: center; }
+.sound h2 { font-size: 36px; margin-bottom: 16px; }
+.sound p { color: var(--text-2); max-width: 640px; margin: 0 auto 28px; font-size: 16px; }
+.wave {
+  display: flex; align-items: flex-end; justify-content: center;
+  gap: 6px; height: 80px; margin: 0 auto;
+}
+.wave span {
+  display: block; width: 4px; background: var(--brand); border-radius: 4px;
+  animation: pluck 1.6s ease-in-out infinite;
+}
+.wave span:nth-child(1) { height: 30%; animation-delay: 0s; }
+.wave span:nth-child(2) { height: 60%; animation-delay: .1s; }
+.wave span:nth-child(3) { height: 90%; animation-delay: .2s; }
+.wave span:nth-child(4) { height: 70%; animation-delay: .3s; }
+.wave span:nth-child(5) { height: 50%; animation-delay: .4s; }
+.wave span:nth-child(6) { height: 80%; animation-delay: .5s; }
+.wave span:nth-child(7) { height: 40%; animation-delay: .6s; }
+.wave span:nth-child(8) { height: 60%; animation-delay: .7s; }
+.wave span:nth-child(9) { height: 30%; animation-delay: .8s; }
+@keyframes pluck {
+  0%, 100% { transform: scaleY(1); opacity: .85; }
+  50% { transform: scaleY(1.3); opacity: 1; }
+}
+
+/* Privacy */
+.privacy {
+  background: var(--surface); border-radius: 24px;
+  padding: 64px 48px; text-align: center; border: 1px solid var(--divider);
+}
+.privacy h2 {
+  font-size: 40px; font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 12px; line-height: 1.15;
+}
+.privacy .sub { color: var(--text-2); font-size: 16px; max-width: 560px; margin: 0 auto 36px; }
+.privacy-list {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  text-align: left;
+}
+.privacy-item {
+  background: var(--bg); border-radius: 14px; padding: 20px 22px;
+}
+.privacy-item .num {
+  display: inline-block; width: 28px; height: 28px; line-height: 28px;
+  text-align: center; background: var(--brand); color: #fff;
+  border-radius: 50%; font-size: 13px; font-weight: 600; margin-bottom: 10px;
+}
+.privacy-item h4 { font-size: 15px; margin-bottom: 4px; }
+.privacy-item p { color: var(--text-2); font-size: 13.5px; }
+
+/* Platforms */
+.platforms { text-align: center; }
+.platforms h2 { font-size: 36px; margin-bottom: 12px; }
+.platforms p.sub { color: var(--text-2); margin-bottom: 40px; }
+.devices {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.device {
+  background: var(--surface); border: 1px solid var(--divider);
+  border-radius: 18px; padding: 28px 20px; text-align: center;
+}
+.device .icon { font-size: 32px; margin-bottom: 10px; }
+.device h4 { font-size: 15px; margin-bottom: 4px; }
+.device small { color: var(--text-3); font-size: 12px; }
+
+/* Price */
+.price {
+  background: linear-gradient(135deg, var(--brand-soft) 0%, #F6F2EC 100%);
+  border-radius: 24px; padding: 56px 40px; text-align: center;
+}
+.price h2 { font-size: 32px; margin-bottom: 12px; }
+.price .amount { font-size: 56px; font-weight: 700; letter-spacing: -0.02em; margin: 16px 0 8px; }
+.price .amount small { font-size: 18px; font-weight: 500; color: var(--text-2); margin-left: 4px; }
+.price .desc { color: var(--text-2); font-size: 15px; max-width: 480px; margin: 0 auto 24px; }
+.price .feats {
+  display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+  font-size: 14px; color: var(--text-2);
+}
+.price .feats span::before { content: "✓ "; color: var(--brand); font-weight: 700; }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--divider);
+  padding: 56px 0 32px; margin-top: 32px;
+}
+.foot-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  margin-bottom: 40px;
+}
+.foot-brand p { color: var(--text-2); font-size: 13.5px; margin-top: 12px; max-width: 280px; }
+.foot-col h5 { font-size: 13px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
+.foot-col a { display: block; color: var(--text-2); font-size: 13.5px; padding: 4px 0; }
+.foot-col a:hover { color: var(--brand); text-decoration: none; }
+.foot-bottom {
+  border-top: 1px solid var(--divider); padding-top: 24px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 12.5px; color: var(--text-3);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .features, .privacy-list, .devices { grid-template-columns: 1fr 1fr; }
+  .someday { grid-template-columns: 1fr; padding: 40px 28px; gap: 32px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .hero h1 { font-size: 42px; }
+  .section-head h2, .sound h2, .platforms h2 { font-size: 28px; }
+  .privacy h2 { font-size: 30px; }
+}
+@media (max-width: 560px) {
+  .nav-links { gap: 14px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 64px 0 56px; }
+  .hero h1 { font-size: 34px; }
+  .hero p.lede { font-size: 16px; }
+  .features, .privacy-list, .devices { grid-template-columns: 1fr; }
+  .privacy, .price, .someday { padding: 40px 24px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  section { padding: 56px 0; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index-en.html" class="brand">
+      <span class="brand-mark"><img src="imgs/plucknote.png" alt="PluckNote"></span>
+      <span class="brand-text">PluckNote<small>Fingerstyle notes</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#someday">Someday</a>
+      <a href="#sound">Sound</a>
+      <a href="#privacy">Privacy</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="terms.html">Terms</a>
+      <a href="#download" class="nav-cta">Download</a>
+      <span class="lang-switch"><a href="index.html">中文</a>| <a href="index-en.html" class="active">EN</a></span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow">iPhone · iPad · Mac · Widget</span>
+    <h1>Pluck a string.  <span class="accent"> Capture a thought.</span></h1>
+    <p class="lede">PluckNote is a private notes &amp; tasks app for Apple devices. Your data stays in your own iCloud — and every interaction sounds like a soft guitar string.</p>
+    <div class="hero-cta">
+      <a href="#download" class="btn btn-primary">Download on the App Store</a>
+      <a href="#features" class="btn btn-ghost">Learn more</a>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="container">
+    <div class="section-head">
+      <h2>Simple things, done well</h2>
+      <p>No folders, no formatting gymnastics. Just capture it, then look at it.</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <span class="emoji">💡</span>
+        <h3>Capture anywhere</h3>
+        <p>From a Home Screen widget, the Mac menu bar, or the iPad side rail — the moment an idea arrives, it's already saved.</p>
+        <a class="link" href="#platforms">See supported devices →</a>
+      </div>
+      <div class="feature">
+        <span class="emoji">🥳</span>
+        <h3>Whatever feels natural</h3>
+        <p>Text, checklist, color, date — four building blocks are all you need. A thought becomes a task with one more tap.</p>
+        <a class="link" href="#someday">How Someday works →</a>
+      </div>
+      <div class="feature">
+        <span class="emoji">🎉</span>
+        <h3>Review every unlock</h3>
+        <p>Home &amp; desktop widgets, push reminders — keep today's tasks in plain sight so yesterday's notes keep working for you.</p>
+        <a class="link" href="#privacy">No analytics. Ever. →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="someday">
+  <div class="container">
+    <div class="someday">
+      <div class="someday-text">
+        <h2>Someday inbox — let tasks flow at their own pace</h2>
+        <p>Have an idea you'll get to "later"? Drop it into <b>Someday</b> with no date attached. When the day comes, promote it to a real calendar day.</p>
+        <p>Unfinished items never disappear — <b>Migrate</b> carries them forward, preserving the original creation date. No guilt, no reset.</p>
+        <p>Ideas, todos and plans drift gently between three states. Like water. Like a melody.</p>
+      </div>
+      <div class="someday-visual" aria-hidden="true">
+        <div class="note someday"><span>Buy a ukulele</span><span class="tag">Someday</span></div>
+        <div class="note today"><span>Finish quarterly review</span><span class="tag">Today</span></div>
+        <div class="note migrate"><span>Reply to that email</span><span class="tag">Migrated</span></div>
+        <div class="note"><span>Prep materials for tomorrow's meeting</span><span class="tag">Today</span></div>
+        <div class="note someday"><span>Learn a fingerstyle song</span><span class="tag">Someday</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sound" class="sound">
+  <div class="container">
+    <h2>Every save sounds like a plucked string</h2>
+    <p>The "pluck" is synthesized locally via a Karplus-Strong physical model — no audio assets, no network calls. In Settings you can even use your notes to "play" a melody of <i>Jasmine Flower</i>.</p>
+    <div class="wave" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="container">
+    <div class="privacy">
+      <h2>We don't sell your privacy.</h2>
+      <p class="sub">PluckNote collects no note content, no personal data, and no third-party SDK telemetry. Your data belongs to you — and only you.</p>
+      <div class="privacy-list">
+        <div class="privacy-item">
+          <span class="num">1</span>
+          <h4>No server</h4>
+          <p>Notes, colors and dates live in your personal iCloud. The developer has no way to read them.</p>
+        </div>
+        <div class="privacy-item">
+          <span class="num">2</span>
+          <h4>No analytics</h4>
+          <p>No event tracking, no crash reporting, no behavioral profiling. Just a quiet pen that writes.</p>
+        </div>
+        <div class="privacy-item">
+          <span class="num">3</span>
+          <h4>No third-party SDKs</h4>
+          <p>No ads, no ad networks, no push services. Premium purchases are processed solely by Apple.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platforms" class="platforms">
+  <div class="container">
+    <h2>Synced across every screen</h2>
+    <p class="sub">From phone to desktop, from the Home Screen to the Notification Center. Capture once, see it everywhere.</p>
+    <div class="devices">
+      <div class="device">
+        <div class="icon">📱</div>
+        <h4>iPhone</h4>
+        <small>iOS 17+</small>
+      </div>
+      <div class="device">
+        <div class="icon">📋</div>
+        <h4>iPad</h4>
+        <small>iPadOS 17+</small>
+      </div>
+      <div class="device">
+        <div class="icon">💻</div>
+        <h4>Mac</h4>
+        <small>macOS 14+</small>
+      </div>
+      <div class="device">
+        <div class="icon">🧩</div>
+        <h4>Widgets</h4>
+        <small>Today · Quick Add</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="container">
+    <div class="price">
+      <h2>One price. No subscription.</h2>
+      <div class="amount">$3.99<small>forever</small></div>
+      <p class="desc">Unlocks full-text search and advanced statistics. The core app is fully free — no ads, no trackers.</p>
+      <div class="feats">
+        <span>Full-text search</span>
+        <span>Advanced stats</span>
+        <span>Export &amp; backup</span>
+        <span>iCloud multi-device</span>
+      </div>
+      <p style="margin-top: 28px;">
+        <a href="#" class="btn btn-primary">Download on the App Store</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index-en.html" class="brand">
+          <span class="brand-mark"><img src="imgs/plucknote.png" alt="PluckNote"></span>
+          <span class="brand-text">PluckNote<small>Fingerstyle notes</small></span>
+        </a>
+        <p>Pluck a string. Capture a thought. A quiet pen that belongs only to you.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Product</h5>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">iPhone</a>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">iPad</a>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">Mac</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="#features">Quick start</a>
+        <a href="#someday">Someday guide</a>
+        <a href="#sound">About the sound</a>
+        <a href="#privacy">Privacy promise</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="mailto:chixiang1983@gmail.com">Email</a>
+        <a href="https://github.com/chixiang" target="_blank" rel="noopener">GitHub</a>
+        <a href="#">Twitter</a>
+        <a href="#">Mastodon</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 PluckNote. All rights reserved.</span>
+      <span>Made with care · Shanghai, China</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

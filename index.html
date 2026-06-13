@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PluckNote · 指弹笔记</title>
+<meta name="description" content="PluckNote（指弹笔记）是一款私密的 iCloud 笔记与任务应用，覆盖 iPhone、iPad、Mac 与主屏小组件。拨动一根弦，记下一个想法。">
+<link rel="icon" type="image/png" href="imgs/plucknote.png">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --brand: #5B7CDB;
+  --brand-soft: #EEF2FB;
+  --bg: #FAF8F8;
+  --surface: #FFFFFF;
+  --text: #1a1a1a;
+  --text-2: #555;
+  --text-3: #888;
+  --divider: #eee;
+  --radius: 18px;
+}
+html { -webkit-text-size-adjust: 100%; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+a { color: var(--brand); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+/* Nav */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 248, 248, 0.85);
+  backdrop-filter: saturate(180%) blur(16px);
+  -webkit-backdrop-filter: saturate(180%) blur(16px);
+  border-bottom: 1px solid var(--divider);
+}
+.nav-inner {
+  max-width: 1080px; margin: 0 auto; padding: 14px 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.brand { display: flex; align-items: center; gap: 10px; color: var(--text); font-weight: 700; }
+.brand:hover { text-decoration: none; }
+.brand-mark {
+  width: 30px; height: 30px; border-radius: 8px;
+  overflow: hidden; flex: none;
+  background: transparent; position: relative;
+  box-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.12),
+    0 4px 12px rgba(0, 0, 0, 0.08),
+    inset 0 0 0 1px rgba(0, 0, 0, 0.10);
+}
+.brand-mark img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand-text small { font-size: 11px; color: var(--text-3); font-weight: 500; margin-top: 2px; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a { color: var(--text-2); font-size: 14px; }
+.nav-links a:hover { color: var(--text); text-decoration: none; }
+.nav-cta {
+  background: var(--text); color: #fff !important;
+  padding: 8px 14px; border-radius: 999px; font-size: 13px; font-weight: 500;
+}
+.nav-cta:hover { background: var(--brand); text-decoration: none; }
+.lang-switch { font-size: 12px; color: var(--text-3); }
+.lang-switch a { color: var(--text-3); margin: 0 4px; }
+.lang-switch a.active { color: var(--text); font-weight: 600; }
+
+/* Hero */
+.hero { padding: 96px 0 80px; text-align: center; }
+.eyebrow {
+  display: inline-block; font-size: 12px; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--brand);
+  background: var(--brand-soft); padding: 6px 12px; border-radius: 999px;
+  margin-bottom: 24px; font-weight: 600;
+}
+.hero h1 {
+  font-size: 56px; line-height: 1.1; font-weight: 700;
+  letter-spacing: -0.02em; margin-bottom: 20px;
+}
+.hero h1 .accent { color: var(--brand); }
+.hero p.lede {
+  font-size: 18px; color: var(--text-2);
+  max-width: 620px; margin: 0 auto 36px;
+}
+.hero-cta { display: inline-flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 22px; border-radius: 999px;
+  font-size: 15px; font-weight: 600; transition: all .15s ease;
+  border: 1px solid transparent; cursor: pointer;
+}
+.btn-primary { background: var(--text); color: #fff; }
+.btn-primary:hover { background: var(--brand); text-decoration: none; }
+.btn-ghost { background: transparent; color: var(--text); border-color: var(--divider); }
+.btn-ghost:hover { border-color: var(--text); text-decoration: none; }
+
+/* Section base */
+section { padding: 72px 0; }
+.section-head { text-align: center; margin-bottom: 48px; }
+.section-head h2 {
+  font-size: 36px; line-height: 1.2; font-weight: 700;
+  letter-spacing: -0.01em; margin-bottom: 12px;
+}
+.section-head p { color: var(--text-2); font-size: 16px; max-width: 560px; margin: 0 auto; }
+
+/* Three feature columns */
+.features {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.feature {
+  background: var(--surface); border: 1px solid var(--divider);
+  border-radius: var(--radius); padding: 32px 28px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.feature:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(91,124,219,0.08); }
+.feature .emoji { font-size: 28px; margin-bottom: 14px; display: inline-block; }
+.feature h3 { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+.feature p { color: var(--text-2); font-size: 14.5px; line-height: 1.6; }
+.feature .link { display: inline-block; margin-top: 14px; font-size: 13px; font-weight: 500; }
+
+/* Someday highlight */
+.someday {
+  background: var(--surface);
+  border-radius: 24px; padding: 56px 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+  border: 1px solid var(--divider);
+}
+.someday-text h2 { font-size: 32px; line-height: 1.2; margin-bottom: 16px; }
+.someday-text p { color: var(--text-2); font-size: 16px; margin-bottom: 12px; }
+.someday-visual {
+  background: var(--brand-soft); border-radius: 16px; padding: 28px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.note {
+  background: #fff; border-radius: 10px; padding: 12px 14px;
+  font-size: 14px; color: var(--text); border-left: 3px solid var(--brand);
+  display: flex; justify-content: space-between; align-items: center; gap: 8px;
+}
+.note .tag { font-size: 11px; color: var(--text-3); }
+.note.someday { border-left-color: #C5B358; }
+.note.today   { border-left-color: #7CA67C; }
+.note.migrate { border-left-color: #E5A05C; opacity: 0.7; text-decoration: line-through; text-decoration-color: var(--text-3); }
+
+/* Sound */
+.sound { text-align: center; }
+.sound h2 { font-size: 36px; margin-bottom: 16px; }
+.sound p { color: var(--text-2); max-width: 640px; margin: 0 auto 28px; font-size: 16px; }
+.wave {
+  display: flex; align-items: flex-end; justify-content: center;
+  gap: 6px; height: 80px; margin: 0 auto;
+}
+.wave span {
+  display: block; width: 4px; background: var(--brand); border-radius: 4px;
+  animation: pluck 1.6s ease-in-out infinite;
+}
+.wave span:nth-child(1) { height: 30%; animation-delay: 0s; }
+.wave span:nth-child(2) { height: 60%; animation-delay: .1s; }
+.wave span:nth-child(3) { height: 90%; animation-delay: .2s; }
+.wave span:nth-child(4) { height: 70%; animation-delay: .3s; }
+.wave span:nth-child(5) { height: 50%; animation-delay: .4s; }
+.wave span:nth-child(6) { height: 80%; animation-delay: .5s; }
+.wave span:nth-child(7) { height: 40%; animation-delay: .6s; }
+.wave span:nth-child(8) { height: 60%; animation-delay: .7s; }
+.wave span:nth-child(9) { height: 30%; animation-delay: .8s; }
+@keyframes pluck {
+  0%, 100% { transform: scaleY(1); opacity: .85; }
+  50% { transform: scaleY(1.3); opacity: 1; }
+}
+
+/* Privacy */
+.privacy {
+  background: var(--surface); border-radius: 24px;
+  padding: 64px 48px; text-align: center; border: 1px solid var(--divider);
+}
+.privacy h2 {
+  font-size: 40px; font-weight: 700; letter-spacing: -0.01em;
+  margin-bottom: 12px; line-height: 1.15;
+}
+.privacy .sub { color: var(--text-2); font-size: 16px; max-width: 560px; margin: 0 auto 36px; }
+.privacy-list {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
+  text-align: left;
+}
+.privacy-item {
+  background: var(--bg); border-radius: 14px; padding: 20px 22px;
+}
+.privacy-item .num {
+  display: inline-block; width: 28px; height: 28px; line-height: 28px;
+  text-align: center; background: var(--brand); color: #fff;
+  border-radius: 50%; font-size: 13px; font-weight: 600; margin-bottom: 10px;
+}
+.privacy-item h4 { font-size: 15px; margin-bottom: 4px; }
+.privacy-item p { color: var(--text-2); font-size: 13.5px; }
+
+/* Platforms */
+.platforms { text-align: center; }
+.platforms h2 { font-size: 36px; margin-bottom: 12px; }
+.platforms p.sub { color: var(--text-2); margin-bottom: 40px; }
+.devices {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+}
+.device {
+  background: var(--surface); border: 1px solid var(--divider);
+  border-radius: 18px; padding: 28px 20px; text-align: center;
+}
+.device .icon { font-size: 32px; margin-bottom: 10px; }
+.device h4 { font-size: 15px; margin-bottom: 4px; }
+.device small { color: var(--text-3); font-size: 12px; }
+
+/* Price */
+.price {
+  background: linear-gradient(135deg, var(--brand-soft) 0%, #F6F2EC 100%);
+  border-radius: 24px; padding: 56px 40px; text-align: center;
+}
+.price h2 { font-size: 32px; margin-bottom: 12px; }
+.price .amount { font-size: 56px; font-weight: 700; letter-spacing: -0.02em; margin: 16px 0 8px; }
+.price .amount small { font-size: 18px; font-weight: 500; color: var(--text-2); margin-left: 4px; }
+.price .desc { color: var(--text-2); font-size: 15px; max-width: 480px; margin: 0 auto 24px; }
+.price .feats {
+  display: flex; gap: 24px; justify-content: center; flex-wrap: wrap;
+  font-size: 14px; color: var(--text-2);
+}
+.price .feats span::before { content: "✓ "; color: var(--brand); font-weight: 700; }
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--divider);
+  padding: 56px 0 32px; margin-top: 32px;
+}
+.foot-grid {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px;
+  margin-bottom: 40px;
+}
+.foot-brand p { color: var(--text-2); font-size: 13.5px; margin-top: 12px; max-width: 280px; }
+.foot-col h5 { font-size: 13px; font-weight: 600; margin-bottom: 14px; color: var(--text); }
+.foot-col a { display: block; color: var(--text-2); font-size: 13.5px; padding: 4px 0; }
+.foot-col a:hover { color: var(--brand); text-decoration: none; }
+.foot-bottom {
+  border-top: 1px solid var(--divider); padding-top: 24px;
+  display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px;
+  font-size: 12.5px; color: var(--text-3);
+}
+
+/* Responsive */
+@media (max-width: 860px) {
+  .features, .privacy-list, .devices { grid-template-columns: 1fr 1fr; }
+  .someday { grid-template-columns: 1fr; padding: 40px 28px; gap: 32px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; }
+  .hero h1 { font-size: 42px; }
+  .section-head h2, .sound h2, .platforms h2 { font-size: 28px; }
+  .privacy h2 { font-size: 30px; }
+}
+@media (max-width: 560px) {
+  .nav-links { gap: 14px; }
+  .nav-links a:not(.nav-cta) { display: none; }
+  .hero { padding: 64px 0 56px; }
+  .hero h1 { font-size: 34px; }
+  .hero p.lede { font-size: 16px; }
+  .features, .privacy-list, .devices { grid-template-columns: 1fr; }
+  .privacy, .price, .someday { padding: 40px 24px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+  section { padding: 56px 0; }
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <span class="brand-mark"><img src="imgs/plucknote.png" alt="PluckNote"></span>
+      <span class="brand-text">PluckNote<small>指弹笔记</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">功能</a>
+      <a href="#someday">Someday</a>
+      <a href="#sound">拨弦</a>
+      <a href="#privacy">隐私</a>
+      <a href="privacy-zh.html">隐私协议</a>
+      <a href="terms-zh.html">用户协议</a>
+      <a href="#download" class="nav-cta">下载</a>
+      <span class="lang-switch"><a href="index.html" class="active">中文</a>| <a href="index-en.html">EN</a></span>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow">iPhone · iPad · Mac · Widget</span>
+    <h1>拨动一根弦，<span class="accent">记下一个想法。</span></h1>
+    <p class="lede">PluckNote（指弹笔记）是一款私密的笔记与任务应用。你的数据只留在你自己的 iCloud 里，每一次记录都像拨动一根吉他弦那样轻巧。</p>
+    <div class="hero-cta">
+      <a href="#download" class="btn btn-primary">去 App Store 下载</a>
+      <a href="#features" class="btn btn-ghost">了解更多</a>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="container">
+    <div class="section-head">
+      <h2>简单的事，做到顺手</h2>
+      <p>没有复杂的分类，没有花哨的功能。只把"记下来"和"看一眼"做对。</p>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <span class="emoji">💡</span>
+        <h3>在哪都能记</h3>
+        <p>无需排版、无需分类，从主屏小组件、Mac 菜单栏到 iPad 边栏，想法冒出来的一瞬就能落笔。</p>
+        <a class="link" href="#platforms">支持哪些设备 →</a>
+      </div>
+      <div class="feature">
+        <span class="emoji">🥳</span>
+        <h3>怎样顺手怎样记</h3>
+        <p>文字、清单、颜色、日期——四件套组合已经够用。把一个念头变成一个待办，只多一次轻点。</p>
+        <a class="link" href="#someday">了解 Someday →</a>
+      </div>
+      <div class="feature">
+        <span class="emoji">🎉</span>
+        <h3>每次解锁都是一次回顾</h3>
+        <p>主屏小组件、桌面部件、推送通知——把今天的待办放在抬眼可见的地方，让过往的记录持续为你所用。</p>
+        <a class="link" href="#privacy">我们不上传任何分析 →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="someday">
+  <div class="container">
+    <div class="someday">
+      <div class="someday-text">
+        <h2>Someday 收件箱，让任务有节奏地流动</h2>
+        <p>想到一件"以后再说"的事？放进 <b>Someday</b>，不必给它定日期。等哪天准备好了，再把它推到具体的某一天。</p>
+        <p>没做完的事也不会消失——<b>Migrate</b> 会带着它原本的创建日期，平滑地顺延到明天，而不是"清零"重来。</p>
+        <p>灵感、待办、计划，在三个状态之间轻轻流转，像水，又像一段旋律。</p>
+      </div>
+      <div class="someday-visual" aria-hidden="true">
+        <div class="note someday"><span>买一把尤克里里</span><span class="tag">Someday</span></div>
+        <div class="note today"><span>写完季度复盘</span><span class="tag">今天</span></div>
+        <div class="note migrate"><span>回那封邮件</span><span class="tag">已迁移</span></div>
+        <div class="note"><span>把明天的会前材料整理好</span><span class="tag">今天</span></div>
+        <div class="note someday"><span>学一首指弹曲子</span><span class="tag">Someday</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="sound" class="sound">
+  <div class="container">
+    <h2>每一次记录，都像拨动一根弦</h2>
+    <p>PluckNote 的"拨弦"声由 Karplus-Strong 物理建模算法在本地合成，没有预录素材，没有网络请求。打开设置，还能用一条条笔记"弹"一段《茉莉花》。</p>
+    <div class="wave" aria-hidden="true">
+      <span></span><span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+</section>
+
+<section id="privacy">
+  <div class="container">
+    <div class="privacy">
+      <h2>我们不贩卖你的隐私。</h2>
+      <p class="sub">PluckNote 不收集你的笔记内容，不收集你的个人信息，不接入任何第三方 SDK。你的数据只属于你。</p>
+      <div class="privacy-list">
+        <div class="privacy-item">
+          <span class="num">1</span>
+          <h4>不上服务器</h4>
+          <p>笔记、颜色、日期全部存放在你自己的 iCloud，开发者没有也无法读取。</p>
+        </div>
+        <div class="privacy-item">
+          <span class="num">2</span>
+          <h4>不收集分析</h4>
+          <p>没有埋点、没有崩溃上报、没有行为画像。安静地做一支记事的笔。</p>
+        </div>
+        <div class="privacy-item">
+          <span class="num">3</span>
+          <h4>不接入第三方 SDK</h4>
+          <p>不接广告、不接统计、不接推送服务。付费也只走 Apple 的内购。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platforms" class="platforms">
+  <div class="container">
+    <h2>全平台同步</h2>
+    <p class="sub">从手机到桌面，从主屏到通知中心。一次记录，多端可见。</p>
+    <div class="devices">
+      <div class="device">
+        <div class="icon">📱</div>
+        <h4>iPhone</h4>
+        <small>iOS 17+</small>
+      </div>
+      <div class="device">
+        <div class="icon">📋</div>
+        <h4>iPad</h4>
+        <small>iPadOS 17+</small>
+      </div>
+      <div class="device">
+        <div class="icon">💻</div>
+        <h4>Mac</h4>
+        <small>macOS 14+</small>
+      </div>
+      <div class="device">
+        <div class="icon">🧩</div>
+        <h4>主屏小组件</h4>
+        <small>今日待办 · 快速记录</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="download">
+  <div class="container">
+    <div class="price">
+      <h2>一次买断，没有订阅</h2>
+      <div class="amount">¥28<small>永久</small></div>
+      <p class="desc">解锁全文本搜索与高级统计。基础功能完全免费，没有广告，没有追踪。</p>
+      <div class="feats">
+        <span>全文本搜索</span>
+        <span>高级数据统计</span>
+        <span>导出与备份</span>
+        <span>iCloud 多端同步</span>
+      </div>
+      <p style="margin-top: 28px;">
+        <a href="#" class="btn btn-primary">去 App Store 下载</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark"><img src="imgs/plucknote.png" alt="PluckNote"></span>
+          <span class="brand-text">PluckNote<small>指弹笔记</small></span>
+        </a>
+        <p>拨动一根弦，记下一个想法。一支安静的、属于你自己的笔。</p>
+      </div>
+      <div class="foot-col">
+        <h5>产品</h5>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">iPhone 版</a>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">iPad 版</a>
+        <a href="https://apps.apple.com/" target="_blank" rel="noopener">Mac 版</a>
+        <a href="privacy-zh.html">隐私协议</a>
+        <a href="terms-zh.html">用户协议</a>
+      </div>
+      <div class="foot-col">
+        <h5>资源</h5>
+        <a href="#features">快速上手</a>
+        <a href="#someday">Someday 用法</a>
+        <a href="#sound">拨弦说明</a>
+        <a href="#privacy">隐私承诺</a>
+      </div>
+      <div class="foot-col">
+        <h5>联系</h5>
+        <a href="mailto:chixiang1983@gmail.com">邮件反馈</a>
+        <a href="https://github.com/chixiang" target="_blank" rel="noopener">GitHub</a>
+        <a href="#">微博</a>
+        <a href="#">即刻</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 PluckNote. All rights reserved.</span>
+      <span>Made with care · 沪ICP备 0000000号</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
