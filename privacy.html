@@ -171,12 +171,14 @@ footer {
 
     <h2>存储在您个人 iCloud 中的数据</h2>
     <p>您的笔记（包括文字、颜色、元数据）仅通过 Apple 的 CloudKit 框架存储在您个人的 iCloud 账户中。PluckNote 无法访问这些数据。所有数据在 Apple CloudKit 基础设施上传输时使用 TLS 加密，并在 Apple 数据中心静态加密存储。如您启用了 iCloud 高级数据保护（Advanced Data Protection），则同步数据还将受端到端加密保护。</p>
+    <p><b>iCloud 同步功能</b>在 iOS 与 iPadOS 端需要解锁 Premium 后开启；在 macOS 端需要解锁 Premium 后才能进入应用本身。无论是否解锁，PluckNote 均不会访问您个人 iCloud 中的笔记内容。</p>
 
     <h2>我们如何使用数据</h2>
     <p>PluckNote 不将您的数据用于提供应用核心功能（在设备上创建、编辑、同步、删除笔记）以外的任何用途。我们不在服务器端处理您的数据。</p>
 
     <h2>Premium 购买</h2>
     <p>当您购买 PluckNote Premium 时，交易由 Apple 处理。我们仅收到交易确认和匿名化的 Premium 产品标识符。我们不接收您的 Apple ID、支付信息或账单地址。</p>
+    <p><b>一次购买，全平台解锁</b>：您购买 Premium 后，全平台解锁。Apple 通过 StoreKit 2 跨设备 entitlement 同步机制完成此过程，无需 PluckNote 介入。</p>
 
     <h2>分析统计</h2>
     <p>PluckNote 不使用任何第三方分析服务。我们不追踪您的行为、页面浏览或功能使用。</p>
@@ -191,7 +193,7 @@ footer {
     <ul>
     <li>您可以随时在应用内删除任何笔记</li>
     <li>您可以通过卸载应用来删除您的数据（iCloud 副本根据 Apple 的保留政策保留 30 天，该保留期由 Apple 控制，不由 PluckNote 决定）</li>
-    <li>您可在应用内通过「设置 → 导出」将所有笔记导出为 JSON 格式</li>
+    <li>在解锁 Premium 的前提下，您可在应用内通过「设置 → 导出」将所有笔记导出为 JSON 格式，并通过「设置 → 导入」从 JSON 备份恢复</li>
     <li>您可以通过以下地址联系我们请求有关您数据的信息（我们将回复确认我们不持有任何数据）</li>
     </ul>
 
