@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mac App Store Free - PluckNote</title>
+  <link rel="stylesheet" href="../final/styles/iphone-frame.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 2560px; height: 1600px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+      background: #FAF8F8; color: #1a1a1a; overflow: hidden;
+      display: flex;
+    }
+    .panel {
+      width: 800px; flex-shrink: 0;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 80px;
+      position: relative; z-index: 1;
+    }
+    .panel::after {
+      content: '';
+      position: absolute; right: -12px; top: 0; bottom: 0; width: 12px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.04), transparent);
+    }
+    .eyebrow {
+      display: inline-block; align-self: flex-start;
+      font-size: 20px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #5B7CDB; font-weight: 700; background: #EEF2FB;
+      padding: 12px 24px; border-radius: 999px; margin-bottom: 24px;
+    }
+    h1 { font-size: 72px; font-weight: 900; line-height: 1.1; color: #1a1a1a; letter-spacing: -0.03em; margin-bottom: 8px; }
+    h1 .accent { color: #5B7CDB; }
+    .subtitle { font-size: 22px; color: #555; line-height: 1.4; margin-top: 8px; }
+    .right-area {
+      flex: 1; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 60px;
+    }
+    .devices-row {
+      display: flex; align-items: flex-end; gap: 60px;
+    }
+    .device-wrapper {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .device-label {
+      margin-top: 24px; font-size: 24px; font-weight: 600; color: #555; letter-spacing: 0.05em;
+    }
+    .mac-device .mac-frame { width: 1000px; height: 650px; }
+    .mac-device .mac-frame { border-radius: 18px; padding: 12px 12px 0 12px; }
+    .mac-device .mac-screen { border-radius: 6px; }
+    .mac-device .mac-base { height: 14px; }
+    .iphone-device .iphone-frame { width: 350px; height: 770px; border-radius: 48px; padding: 8px; }
+    .iphone-device .iphone-screen { border-radius: 38px; }
+    .iphone-device .screen-glare { border-radius: 38px 38px 0 0; }
+    .iphone-device .iphone-button { display: none; }
+    .divider {
+      margin: 40px 0 28px; font-size: 22px; color: #888; font-weight: 500; text-align: center;
+    }
+    .price-row {
+      display: flex; align-items: center; gap: 20px;
+      background: #5B7CDB; padding: 20px 56px; border-radius: 999px;
+      box-shadow: 0 10px 40px rgba(91,124,219,0.35);
+    }
+    .price-title { font-size: 28px; font-weight: 700; color: #fff; }
+    .price-desc { font-size: 22px; color: rgba(255,255,255,0.85); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <div class="eyebrow">Free on iOS</div>
+    <h1>Good enough<br><span class="accent">for daily use</span></h1>
+    <div class="subtitle">Notes, checklists, colors, dates — all free</div>
+  </div>
+  <div class="right-area">
+    <div class="devices-row">
+      <div class="device-wrapper mac-device">
+        <div class="mac-frame">
+          <div class="mac-screen"><img src="screens/01-today-en.png" alt="PluckNote Mac"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="device-label">Mac</div>
+      </div>
+      <div class="device-wrapper iphone-device">
+        <div class="iphone-frame">
+          <div class="iphone-screen">
+            <div class="dynamic-island"></div>
+            <div class="screen-glare"></div>
+            <img src="../final/screens/03-someday.png" alt="PluckNote iPhone">
+          </div>
+        </div>
+        <div class="device-label">iPhone</div>
+      </div>
+    </div>
+    <div class="divider">Only pay if you need multi-device sync</div>
+    <div class="price-row">
+      <div class="price-title">Free on iOS</div>
+      <div class="price-desc">Premium on Mac</div>
+    </div>
+  </div>
+</body>
+</html>

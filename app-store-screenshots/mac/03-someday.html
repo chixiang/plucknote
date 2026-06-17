@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>Mac App Store - PluckNote</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 2560px; height: 1600px;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background: #FAF8F8;
+      color: #1a1a1a;
+      overflow: hidden;
+      display: flex;
+    }
+    .panel {
+      width: 800px; flex-shrink: 0;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 100px 80px;
+      position: relative;
+      z-index: 1;
+    }
+    .panel::after {
+      content: '';
+      position: absolute;
+      right: -12px; top: 0; bottom: 0;
+      width: 12px;
+      background: linear-gradient(90deg, rgba(0,0,0,0.04), transparent);
+    }
+    .eyebrow {
+      display: inline-block; align-self: flex-start;
+      font-size: 20px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #5B7CDB; font-weight: 700; background: #EEF2FB;
+      padding: 12px 24px; border-radius: 999px; margin-bottom: 24px;
+    }
+    h1 { font-size: 72px; font-weight: 900; line-height: 1.1; color: #1a1a1a; letter-spacing: -0.03em; margin-bottom: 8px; }
+    h1 .accent { color: #5B7CDB; }
+    .subtitle { font-size: 22px; color: #555; line-height: 1.4; margin-top: 8px; }
+    .screenshot-area {
+      flex: 1; overflow: hidden; display: flex; align-items: center; justify-content: center;
+      background: #f0ecec; padding: 40px;
+    }
+    .screenshot-area img {
+      width: 100%; height: 100%; object-fit: contain; display: block;
+      border-radius: 6px; box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    }
+  </style>
+</head>
+<body>
+  <div class="panel">
+    <div class="eyebrow">Someday Inbox</div>
+    <h1>想到的事<br><span class="accent">先放进 Someday</span></h1>
+    <div class="subtitle">Migrate 保留原始创建时间</div>
+  </div>
+  <div class="screenshot-area">
+    <img src="screens/02-someday.png" alt="PluckNote Mac">
+  </div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>App Store Screenshot</title>
+  <link rel="stylesheet" href="styles/iphone-frame.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1290px; height: 2796px;
+      font-family: "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background: #FAF8F8; color: #1a1a1a; overflow: hidden;
+    }
+    .top-section {
+      height: 1068px;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 360px 100px 0;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-block; font-size: 24px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #5B7CDB; font-weight: 700; background: #EEF2FB;
+      padding: 14px 28px; border-radius: 999px; margin-bottom: 24px;
+    }
+    h1 { font-size: 140px; font-weight: 900; line-height: 1.1; color: #1a1a1a; letter-spacing: -0.03em; margin-bottom: 12px; }
+    h1 .accent { color: #5B7CDB; }
+    .subtitle { font-size: 28px; color: #555; line-height: 1.4; max-width: 800px; margin: 0 auto; }
+    .bottom-section {
+      height: 1728px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .iphone-area { width: 800px; flex-shrink: 0; display: flex; justify-content: center; }
+    .iphone-area .iphone-frame {
+      transform: scale(1.48); transform-origin: top center;
+  filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.12));
+    }
+  </style>
+</head>
+<body>
+  <div class="top-section">
+    <div class="eyebrow">Someday Inbox</div>
+    <h1>想到的事<br><span class="accent">先放进 Someday</span></h1>
+    <p class="subtitle">Migrate 顺延不丢，保留原创建日期</p>
+  </div>
+  <div class="bottom-section">
+    <div class="iphone-area">
+      <div class="iphone-frame">
+        <div class="iphone-button left-action"></div>
+        <div class="iphone-button volume-up"></div>
+        <div class="iphone-button volume-down"></div>
+        <div class="iphone-button power"></div>
+        <div class="iphone-screen">
+          <div class="dynamic-island"></div>
+          <div class="screen-glare"></div>
+          <img src="screens/03-someday.png" alt="PluckNote">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

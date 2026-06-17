@@ -1,0 +1,182 @@
+/* iphone-frame.css — Reusable iPhone 15 Pro Max frame (Natural Titanium) */
+.iphone-frame {
+  position: relative;
+  width: 540px;
+  height: 1180px;
+  background: linear-gradient(
+    135deg,
+    #545458 0%,
+    #3A3A3C 35%,
+    #2C2C2E 65%,
+    #1C1C1E 100%
+  );
+  border-radius: 78px;
+  padding: 12px;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.18),
+    inset 0 0 0 3px rgba(0, 0, 0, 0.4),
+    0 30px 80px rgba(91, 124, 219, 0.25),
+    0 0 0 0.5px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.iphone-screen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 64px;
+  overflow: hidden;
+  position: relative;
+}
+
+.iphone-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.dynamic-island {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 124px;
+  height: 36px;
+  background: #000;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+.screen-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 240px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+  border-radius: 64px 64px 0 0;
+}
+
+.iphone-button {
+  position: absolute;
+  background: linear-gradient(90deg, #1c1c1e 0%, #2c2c2e 100%);
+  border-radius: 2px;
+  z-index: 1;
+}
+
+.iphone-button.left-action {
+  left: -3px;
+  width: 3px;
+  height: 32px;
+  top: 200px;
+}
+
+.iphone-button.volume-up {
+  left: -3px;
+  width: 3px;
+  height: 80px;
+  top: 260px;
+}
+
+.iphone-button.volume-down {
+  left: -3px;
+  width: 3px;
+  height: 80px;
+  top: 360px;
+}
+
+.iphone-button.power {
+  right: -3px;
+  width: 3px;
+  height: 100px;
+  top: 320px;
+  background: linear-gradient(90deg, #2c2c2e 0%, #1c1c1e 100%);
+}
+
+/* iPad frame — for cross-platform screenshot */
+.ipad-frame {
+  position: relative;
+  width: 700px;
+  height: 920px;
+  background: linear-gradient(
+    135deg,
+    #545458 0%,
+    #3A3A3C 50%,
+    #1C1C1E 100%
+  );
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.18),
+    inset 0 0 0 3px rgba(0, 0, 0, 0.4),
+    0 30px 80px rgba(91, 124, 219, 0.25),
+    0 0 0 0.5px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.ipad-screen {
+  width: 100%;
+  height: 100%;
+  background: #000;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+}
+
+.ipad-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* MacBook frame — for cross-platform screenshot */
+.mac-frame {
+  position: relative;
+  width: 920px;
+  height: 620px;
+  background: linear-gradient(180deg, #1c1c1e 0%, #2c2c2e 100%);
+  border-radius: 16px;
+  padding: 12px 12px 0 12px;
+  box-shadow:
+    inset 0 0 0 1.5px rgba(255, 255, 255, 0.18),
+    0 30px 80px rgba(91, 124, 219, 0.25),
+    0 0 0 0.5px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.mac-screen {
+  width: 100%;
+  height: calc(100% - 12px);
+  background: #000;
+  border-radius: 4px 4px 0 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.mac-screen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+.mac-base {
+  width: 110%;
+  height: 12px;
+  background: linear-gradient(180deg, #3A3A3C 0%, #1C1C1E 100%);
+  border-radius: 0 0 8px 8px;
+  position: relative;
+  left: -5%;
+  margin-top: -1px;
+}

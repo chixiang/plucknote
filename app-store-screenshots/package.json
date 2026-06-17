@@ -1,0 +1,14 @@
+{
+  "name": "plucknote-app-store-screenshots",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PluckNote App Store screenshot generator (HTML/CSS + Puppeteer)",
+  "scripts": {
+    "render": "node render.js",
+    "render:en": "node render-en.js",
+    "render:all": "node render-all.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^22.0.0"
+  }
+}
