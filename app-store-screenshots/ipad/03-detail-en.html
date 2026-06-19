@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>iPad App Store - PluckNote</title>
+  <link rel="stylesheet" href="../final/styles/iphone-frame.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 2048px; height: 2732px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif;
+      background: #FAF8F8; color: #1a1a1a; overflow: hidden;
+    }
+    .top-section {
+      height: 1066px;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 360px 100px 0;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-block; font-size: 48px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #5B7CDB; font-weight: 700; background: #EEF2FB;
+      padding: 24px 48px; border-radius: 999px; margin-bottom: 48px;
+    }
+    h1 { font-size: 180px; font-weight: 900; line-height: 1.1; color: #1a1a1a; letter-spacing: -0.03em; margin-bottom: 24px; }
+    h1 .accent { color: #5B7CDB; }
+    .subtitle { font-size: 56px; color: #555; line-height: 1.4; max-width: 1400px; margin: 0 auto; }
+    .bottom-section {
+      height: 1666px; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ipad-area {
+      width: 1100px; height: 1444px;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .ipad-area .ipad-frame {
+      width: 1100px; height: 1444px;
+      border-radius: 58px; padding: 18px;
+      filter: drop-shadow(0 40px 80px rgba(0, 0, 0, 0.12));
+    }
+    .ipad-area .ipad-screen { border-radius: 40px; }
+  </style>
+</head>
+<body>
+  <div class="top-section">
+    <div class="eyebrow">Privacy</div>
+    <h1>Your notes<br><span class="accent">Only you can read</span></h1>
+    <p class="subtitle">Privacy-first · Local iCloud</p>
+  </div>
+  <div class="bottom-section">
+    <div class="ipad-area">
+      <div class="ipad-frame">
+        <div class="ipad-screen">
+          <img src="screens/03-detail-en.png" alt="PluckNote iPad">
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

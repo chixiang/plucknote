@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  <title>iPad App Store Free - PluckNote</title>
+  <link rel="stylesheet" href="../final/styles/iphone-frame.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 2048px; height: 2732px;
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", sans-serif;
+      background: #FAF8F8; color: #1a1a1a; overflow: hidden;
+    }
+    .top-section {
+      height: 1066px;
+      display: flex; flex-direction: column; align-items: center;
+      padding: 360px 100px 0;
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-block; font-size: 48px; letter-spacing: 0.12em; text-transform: uppercase;
+      color: #5B7CDB; font-weight: 700; background: #EEF2FB;
+      padding: 24px 48px; border-radius: 999px; margin-bottom: 48px;
+    }
+    h1 { font-size: 180px; font-weight: 900; line-height: 1.1; color: #1a1a1a; letter-spacing: -0.03em; margin-bottom: 24px; }
+    h1 .accent { color: #5B7CDB; }
+    .subtitle { font-size: 56px; color: #555; line-height: 1.4; max-width: 1400px; margin: 0 auto; }
+    .bottom-section {
+      height: 1666px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .devices-row {
+      display: flex; align-items: flex-end; gap: 80px; justify-content: center;
+    }
+    .device-wrapper { display: flex; flex-direction: column; align-items: center; }
+    .device-label { margin-top: 28px; font-size: 40px; font-weight: 600; color: #555; letter-spacing: 0.05em; }
+    /* Mac frame — landscape, dominant (larger than iPad) */
+    .mac-device .mac-frame {
+      width: 1200px; height: 780px;
+      border-radius: 24px; padding: 18px 18px 0 18px;
+    }
+    .mac-device .mac-screen { border-radius: 8px; }
+    .mac-device .mac-base { height: 22px; }
+    /* iPad frame — portrait, smaller than Mac */
+    .ipad-device .ipad-frame {
+      width: 540px; height: 720px;
+      border-radius: 40px; padding: 14px;
+      filter: drop-shadow(0 30px 60px rgba(0, 0, 0, 0.12));
+    }
+    .ipad-device .ipad-screen { border-radius: 28px; }
+    .divider { margin: 50px 0 36px; font-size: 40px; color: #888; font-weight: 500; text-align: center; }
+    .price-row {
+      display: flex; align-items: center; gap: 32px;
+      background: #5B7CDB; padding: 32px 80px; border-radius: 999px;
+      box-shadow: 0 16px 60px rgba(91,124,219,0.35);
+    }
+    .price-title { font-size: 56px; font-weight: 700; color: #fff; }
+    .price-desc { font-size: 44px; color: rgba(255,255,255,0.85); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <div class="top-section">
+    <div class="eyebrow">iOS 免费版</div>
+    <h1>已足够<br><span class="accent">日常使用</span></h1>
+    <p class="subtitle">记录、清单、颜色、日期——全部免费</p>
+  </div>
+  <div class="bottom-section">
+    <div class="devices-row">
+      <div class="device-wrapper mac-device">
+        <div class="mac-frame">
+          <div class="mac-screen"><img src="../mac/screens/01-today.png" alt="PluckNote Mac"></div>
+          <div class="mac-base"></div>
+        </div>
+        <div class="device-label">Mac</div>
+      </div>
+      <div class="device-wrapper ipad-device">
+        <div class="ipad-frame">
+          <div class="ipad-screen"><img src="screens/01-today.png" alt="PluckNote iPad"></div>
+        </div>
+        <div class="device-label">iPad</div>
+      </div>
+    </div>
+    <div class="divider">仅多端同步需付费解锁</div>
+    <div class="price-row">
+      <div class="price-title">iOS 免费</div>
+      <div class="price-desc">Mac 需解锁</div>
+    </div>
+  </div>
+</body>
+</html>
