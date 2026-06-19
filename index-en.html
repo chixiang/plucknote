@@ -71,7 +71,7 @@ a:hover { text-decoration: underline; }
 .lang-switch a.active { color: var(--text); font-weight: 600; }
 
 /* Hero */
-.hero { padding: 96px 0 80px; text-align: center; }
+.hero { padding: 80px 0 40px; text-align: center; }
 .eyebrow {
   display: inline-block; font-size: 12px; letter-spacing: 0.12em;
   text-transform: uppercase; color: var(--brand);
@@ -98,6 +98,32 @@ a:hover { text-decoration: underline; }
 .btn-primary:hover { background: var(--brand); text-decoration: none; }
 .btn-ghost { background: transparent; color: var(--text); border-color: var(--divider); }
 .btn-ghost:hover { border-color: var(--text); text-decoration: none; }
+
+/* Hero devices — iPhone + Mac, side-by-side with subtle tilt */
+.hero-devices {
+  display: flex; align-items: flex-end; justify-content: center;
+  gap: 24px; margin-top: 56px; padding: 0 24px;
+}
+.hero-devices .mac-shot {
+  width: 460px; height: auto; border-radius: 12px;
+  box-shadow: 0 20px 50px -10px rgba(91,124,219,0.20), 0 8px 20px -4px rgba(0,0,0,0.10);
+  transform: rotate(-3deg);
+}
+.hero-devices .iphone-shot {
+  width: 180px; height: auto; border-radius: 24px;
+  box-shadow: 0 20px 50px -10px rgba(91,124,219,0.20), 0 8px 20px -4px rgba(0,0,0,0.10);
+  transform: rotate(3deg);
+}
+@media (max-width: 860px) {
+  .hero-devices .mac-shot { width: 320px; }
+  .hero-devices .iphone-shot { width: 130px; }
+  .hero-devices { gap: 12px; margin-top: 40px; }
+}
+@media (max-width: 560px) {
+  .hero-devices .mac-shot { width: 240px; }
+  .hero-devices .iphone-shot { width: 100px; }
+  .hero-devices { gap: 8px; }
+}
 
 /* Section base */
 section { padding: 72px 0; }
@@ -145,6 +171,12 @@ section { padding: 72px 0; }
 .note.someday { border-left-color: #C5B358; }
 .note.today   { border-left-color: #7CA67C; }
 .note.migrate { border-left-color: #E5A05C; opacity: 0.7; text-decoration: line-through; text-decoration-color: var(--text-3); }
+
+.someday-shot {
+  max-width: 320px; width: 100%; height: auto; border-radius: 24px;
+  box-shadow: 0 20px 50px -10px rgba(91,124,219,0.20), 0 8px 20px -4px rgba(0,0,0,0.10);
+  margin: 0 auto; display: block;
+}
 
 /* Sound */
 .sound { text-align: center; }
@@ -342,6 +374,10 @@ footer {
       <a href="#download" class="btn btn-primary">Download on the App Store</a>
       <a href="#features" class="btn btn-ghost">Learn more</a>
     </div>
+    <div class="hero-devices">
+      <img class="mac-shot" src="imgs/05-mac-en.png" alt="PluckNote Mac on Mac">
+      <img class="iphone-shot" src="imgs/01-today-en.png" alt="PluckNote iPhone — Today's list">
+    </div>
   </div>
 </header>
 
@@ -383,13 +419,7 @@ footer {
         <p>Unfinished items never disappear — <b>Migrate</b> carries them forward, preserving the original creation date. No guilt, no reset.</p>
         <p>Ideas, todos and plans drift gently between three states. Like water. Like a melody.</p>
       </div>
-      <div class="someday-visual" aria-hidden="true">
-        <div class="note someday"><span>Buy a ukulele</span><span class="tag">Someday</span></div>
-        <div class="note today"><span>Finish quarterly review</span><span class="tag">Today</span></div>
-        <div class="note migrate"><span>Reply to that email</span><span class="tag">Migrated</span></div>
-        <div class="note"><span>Prep materials for tomorrow's meeting</span><span class="tag">Today</span></div>
-        <div class="note someday"><span>Learn a fingerstyle song</span><span class="tag">Someday</span></div>
-      </div>
+<img class="someday-shot" src="imgs/03-someday-en-final.png" alt="PluckNote iPhone — Someday inbox">
     </div>
   </div>
 </section>
