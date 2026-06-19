@@ -172,6 +172,12 @@ section { padding: 72px 0; }
 .note.today   { border-left-color: #7CA67C; }
 .note.migrate { border-left-color: #E5A05C; opacity: 0.7; text-decoration: line-through; text-decoration-color: var(--text-3); }
 
+.someday-shot {
+  max-width: 320px; width: 100%; height: auto; border-radius: 24px;
+  box-shadow: 0 20px 50px -10px rgba(91,124,219,0.20), 0 8px 20px -4px rgba(0,0,0,0.10);
+  margin: 0 auto; display: block;
+}
+
 /* Sound */
 .sound { text-align: center; }
 .sound h2 { font-size: 36px; margin-bottom: 16px; }
@@ -413,13 +419,7 @@ footer {
         <p>没做完的事也不会消失——<b>Migrate</b> 会带着它原本的创建日期，平滑地顺延到明天，而不是"清零"重来。</p>
         <p>灵感、待办、计划，在三个状态之间轻轻流转，像水，又像一段旋律。</p>
       </div>
-      <div class="someday-visual" aria-hidden="true">
-        <div class="note someday"><span>买一把尤克里里</span><span class="tag">Someday</span></div>
-        <div class="note today"><span>写完季度复盘</span><span class="tag">今天</span></div>
-        <div class="note migrate"><span>回那封邮件</span><span class="tag">已迁移</span></div>
-        <div class="note"><span>把明天的会前材料整理好</span><span class="tag">今天</span></div>
-        <div class="note someday"><span>学一首指弹曲子</span><span class="tag">Someday</span></div>
-      </div>
+      <img class="someday-shot" src="imgs/03-someday-final.png" alt="PluckNote iPhone Someday 收件箱">
     </div>
   </div>
 </section>
